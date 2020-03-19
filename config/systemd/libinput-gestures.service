@@ -1,0 +1,8 @@
+[Unit]
+Description=X11 compositor
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/libinput-gestures -c %h/.config/i3/libinput-gestures.conf
+

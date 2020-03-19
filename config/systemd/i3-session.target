@@ -1,0 +1,8 @@
+[Unit]
+Description=i3wm session
+
+Requires=libinput-gestures.service
+Requires=picom.service
+Requires=polybar-i3bar.service
+Requires=picom.service
+Requires=i3-wallpaper.service

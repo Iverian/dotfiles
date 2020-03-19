@@ -1,0 +1,17 @@
+configuration {
+  theme: "~/.cache/wal/rofi-dark.rasi";
+  font: "Noto Sans Mono 10.0";
+  width: 950;
+  lines: 12;
+  padding: 2;
+  auto-select: true;
+  dpi: 192;
+  modi: "window,drun,ssh,run";
+  show-icons: true;
+  display-drun: ">";
+  display-combi: "~";
+  display-window: "@";
+  window-format: "{c} {t}";
+  normal-window: true;
+}
+

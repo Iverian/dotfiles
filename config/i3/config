@@ -1,0 +1,272 @@
+# Autostart
+## Variables
+set $wall "$HOME/.config/wall.png"
+## Commands
+set $start exec --no-startup-id
+set $start_always exec_always --no-startup-id
+## Systemd session
+$start_always systemctl --user import-environment XDG_SESSION_PATH
+$start_always systemctl --user restart i3-session.target
+$start_always systemctl --user restart redshift.service
+## Keyboard settings
+$start setxkbmap -option grp:win_space_toggle
+## Xorg locking
+# $start xset s on
+# $start xset s 600
+$start xss-lock -l -- light-locker-command -l
+## Programs
+$start picom --config "$HOME/.config/picom/picom.conf"
+$start flashfocus
+
+# Appearance
+## Font
+font pango:Noto Sans Mono 8
+## Colors definition
+set_from_resource $fg      i3wm.foreground #f0f0f0
+set_from_resource $bg      i3wm.background #f0f0f0
+set_from_resource $color0  i3wm.color0     #f0f0f0
+set_from_resource $color1  i3wm.color1     #f0f0f0
+set_from_resource $color2  i3wm.color2     #f0f0f0
+set_from_resource $color3  i3wm.color3     #f0f0f0
+set_from_resource $color4  i3wm.color4     #f0f0f0
+set_from_resource $color5  i3wm.color5     #f0f0f0
+set_from_resource $color6  i3wm.color6     #f0f0f0
+set_from_resource $color7  i3wm.color7     #f0f0f0
+set_from_resource $color8  i3wm.color8     #f0f0f0
+set_from_resource $color9  i3wm.color9     #f0f0f0
+set_from_resource $color10 i3wm.color10    #f0f0f0
+set_from_resource $color11 i3wm.color11    #f0f0f0
+set_from_resource $color12 i3wm.color12    #f0f0f0
+set_from_resource $color13 i3wm.color13    #f0f0f0
+set_from_resource $color14 i3wm.color14    #f0f0f0
+set_from_resource $color15 i3wm.color15    #f0f0f0
+## Window title
+for_window [class="^.*$"] title_format "@ %title "
+## Gaps
+for_window[class="^.*$"] border pixel 2
+gaps inner 2
+gaps outer 2
+## Colors
+### Class                 border  backgr. text indicator child_border
+client.focused            $color5 $color5 $bg  $color5   $bg
+client.focused_inactive   $bg     $bg     $fg  $bg       $bg
+client.unfocused          $bg     $bg     $fg  $bg       $bg
+client.urgent             $color3 $color3 $bg  $color5   $color3
+client.placeholder        $bg     $bg     $fg  $bg       $bg
+client.background         $bg
+
+
+# Variables
+set $mod Mod4
+set $alt Mod1
+set $shift Shift
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+focus_on_window_activation focus
+
+# Floating windows
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="Wine"] floating enable, move position center
+for_window [instance="origin.exe"] floating enable
+for_window [class="megasync"] floating enable
+
+set $config_window_params floating enable, resize set 1200 px 1000 px, move position center
+set $config_window_params_sm floating enable, resize set 720 px 600 px, move position center
+for_window [class="Blueman-manager"] $config_window_params
+for_window [class="Pavucontrol"] $config_window_params
+for_window [class="Seahorse"] $config_window_params
+for_window [class="Nmtui"] $config_window_params_sm
+
+# Scratchpad windows
+for_window [class="MEGASync"] floating enable, move position center
+# Keybindings
+
+## Kill focused window
+bindsym $mod+$shift+q kill
+## Reload the configuration file
+bindsym $mod+$shift+c reload
+## Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+$shift+r restart
+
+## Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+## Power
+# bindsym $mod+$shift+e $start $HOME/bin/dmenu-powermenu
+bindsym $mod+$shift+e $start /usr/bin/xfce4-session-logout
+bindsym $mod+$shift+t $start /usr/bin/xfce4-settings-manager
+## Launching Programs
+bindsym $mod+Return $start $TERMINAL
+bindsym --release $mod+d $start "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym Ctrl+$alt+l $start /usr/bin/xflock4
+# bindsym $mod+t $start $HOME/bin/dmenu-open-settings
+bindsym $mod+q $start $FILE
+bindsym $mod+$shift+w $start $BROWSER
+## Flash active window
+bindsym $mod+n $start flash_window
+## Volume control
+set $vol_increment 10
+bindsym XF86AudioMute $start /usr/bin/pamixer -t
+bindsym XF86AudioLowerVolume $start /usr/bin/pamixer -d $vol_increment
+bindsym XF86AudioRaiseVolume $start /usr/bin/pamixer -i $vol_increment
+bindsym $shift+XF86AudioLowerVolume $start /usr/bin/pamixer -d 1
+bindsym $shift+XF86AudioRaiseVolume $start /usr/bin/pamixer -i 1
+## Music player
+set $default_player spotify
+bindsym XF86AudioPrev $start /usr/bin/playerctl --player=$default_player previous
+bindsym XF86AudioPlay $start /usr/bin/playerctl --player=$default_player play-pause
+bindsym XF86AudioNext $start /usr/bin/playerctl --player=$default_player next
+## Brightness
+set $backlight_increment 10
+# bindsym XF86MonBrightnessDown $start $HOME/bin/set-backlight dec $backlight_increment
+# bindsym XF86MonBrightnessUp $start $HOME/bin/set-backlight inc $backlight_increment
+# bindsym $shift+XF86MonBrightnessDown $start $HOME/bin/set-backlight toggle
+# bindsym $shift+XF86MonBrightnessUp $start $HOME/bin/set-backlight set 100
+## Bluetooth autoconnect
+bindsym $mod+$shift+x $start /usr/bin/bluetooth-autoconnect
+## Screenshots
+# bindsym Print $start $HOME/bin/printscreen clipboard
+# bindsym $shift+Print $start $HOME/bin/printscreen file
+
+
+# Moving around:
+## Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+## or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+## _move_ the focused window with the same, but add $shift
+bindsym $mod+$shift+$left move left
+bindsym $mod+$shift+$down move down
+bindsym $mod+$shift+$up move up
+bindsym $mod+$shift+$right move right
+## ditto, with arrow keys
+bindsym $mod+$shift+Left move left
+bindsym $mod+$shift+Down move down
+bindsym $mod+$shift+Up move up
+bindsym $mod+$shift+Right move right
+## split in horizontal orientation
+bindsym $mod+b split h
+## split in vertical orientation
+bindsym $mod+v split v
+## enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+## change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+## toggle tiling / floating
+bindsym $mod+grave floating toggle
+## change focus between tiling / floating windows
+bindsym $mod+$shift+grave focus mode_toggle
+## focus the parent container
+bindsym $mod+a focus parent
+## move the currently focused window to the scratchpad
+bindsym $mod+$shift+g move scratchpad
+## Show the next scratchpad window or hide the focused scratchpad window.
+## If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+g scratchpad show
+## Focus urgent workspace
+bindsym $mod+x [urgent=latest] focus
+## Cycle through workspaces
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+$shift+Tab workspace prev_on_output
+
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+set $wsA "6"
+set $wsB "7"
+set $wsC "8"
+set $wsD "9"
+set $wsE "10"
+
+## Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+bindsym $alt+1 workspace $wsA
+bindsym $alt+2 workspace $wsB
+bindsym $alt+3 workspace $wsC
+bindsym $alt+4 workspace $wsD
+bindsym $alt+5 workspace $wsE
+
+## Move focused container to workspace
+bindsym $mod+$shift+1 move container to workspace $ws1
+bindsym $mod+$shift+2 move container to workspace $ws2
+bindsym $mod+$shift+3 move container to workspace $ws3
+bindsym $mod+$shift+4 move container to workspace $ws4
+bindsym $mod+$shift+5 move container to workspace $ws5
+
+bindsym $alt+$shift+1 move container to workspace $wsA
+bindsym $alt+$shift+2 move container to workspace $wsB
+bindsym $alt+$shift+3 move container to workspace $wsC
+bindsym $alt+$shift+4 move container to workspace $wsD
+bindsym $alt+$shift+5 move container to workspace $wsE
+
+
+# Window specific settings
+assign [class="^discord$"] $wsA
+assign [class="^TelegramDesktop$"] $wsA
+assign [class="^Thunderbird$"] $wsA
+assign [class="^transmission-qt$"] $wsA
+assign [class="^Spotify$"] $wsB
+assign [class="^Lutris$"] $wsC
+assign [class="^Wfica$"] $wsD
+for_window [class="^discord$"] move to workspace $wsA focus
+for_window [class="^TelegramDesktop$"] move to workspace $wsA focus
+for_window [class="^Thunderbird$"] move to workspace $wsA focus
+for_window [class="^transmission-qt$"] move to workspace $wsA
+for_window [class="^Spotify$"] move to workspace $wsB focus
+for_window [class="^Wfica$"] move to workspace $wsD focus
+for_window [class="^Wfica_Splash$"] move to workspace $wsD focus
+for_window [class="^Lutris$"] move to workspace $wsC focus
+for_window [class="^Steam$"] move to workspace $wsC focus
+
+# Resize window (you can also use the mouse for that)
+set $resize_amount 5
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym $left       resize shrink width $resize_amount px or $resize_amount ppt
+    bindsym $down       resize grow height $resize_amount px or $resize_amount ppt
+    bindsym $up         resize shrink height $resize_amount px or $resize_amount ppt
+    bindsym $right      resize grow width $resize_amount px or $resize_amount ppt
+    # same bindings, but for the arrow keys
+    bindsym Left        resize shrink width $resize_amount px or $resize_amount ppt
+    bindsym Down        resize grow height $resize_amount px or $resize_amount ppt
+    bindsym Up          resize shrink height $resize_amount px or $resize_amount ppt
+    bindsym Right       resize grow width $resize_amount px or $resize_amount ppt
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Session autostart
+$start sh "$HOME/.config/i3/autostart.sh"
+$start bluetooth-autoconnect

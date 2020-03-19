@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+OUTPUT=""
+
+IFS=":" read -ra CONTROLLER_POWERED <<< $(bluetoothctl show | grep "Powered")
+IS_POWERED=$(echo "${CONTROLLER_POWERED[1]}" | xargs)
+
+if [ "$IS_POWERED" = "yes" ]; then
+    while IFS="" read -r OUT
+    do
+        IFS=" " read -ra BL_LIST <<< "$OUT"
+        IFS=":" read -ra STATUS_LIST <<< $(bluetoothctl info "${BL_LIST[1]}" | grep "Connected")
+        IS_CONNECTED=$(echo "${STATUS_LIST[1]}" | xargs)
+        if [ "$IS_CONNECTED" = "yes" ]; then
+            OUTPUT=$(echo "${BL_LIST[@]:2}" | xargs)
+            break
+        fi
+    done < <(bluetoothctl devices)
+fi
+
+echo $OUTPUT

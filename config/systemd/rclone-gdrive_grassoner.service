@@ -1,0 +1,17 @@
+[Unit]
+Description=RClone Mount Service for remote gdisk_grassoner:/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+
+ExecStart=/usr/bin/rclone mount gdrive_grassoner:/ %h/RClone/grassoner@gmail.com \
+    --cache-dir %h/.cache/rclone \
+    --config %h/.config/rclone/rclone.conf \
+    --default-permissions \
+    --max-read-ahead 16M \
+    --vfs-cache-mode writes
+
+[Install]
+WantedBy=default.target

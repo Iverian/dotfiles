@@ -1,0 +1,17 @@
+[Unit]
+Description=RClone Mount Service for remote gdisk_41ways1ucky:/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+
+ExecStart=/usr/bin/rclone mount gdrive_41ways1ucky:/ %h/RClone/41ways1ucky@gmail.com \
+    --cache-dir %h/.cache/rclone \
+    --config %h/.config/rclone/rclone.conf \
+    --default-permissions \
+    --max-read-ahead 16M \
+    --vfs-cache-mode writes
+
+[Install]
+WantedBy=default.target

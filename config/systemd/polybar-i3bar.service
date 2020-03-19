@@ -1,0 +1,6 @@
+[Unit]
+Description=Polybar
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/polybar -c %h/.config/polybar/config i3bar

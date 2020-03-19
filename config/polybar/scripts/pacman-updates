@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DISPLAY_THRESHOLD=10
+
+UPDATES_PACMAN=$(checkupdates 2>/dev/null | wc -l)
+UPDATES_AUR=$(yay -Qum 2>/dev/null | wc -l)
+[ ! "$UPDATES_PACMAN" ] && UPDATES_PACMAN=0
+[ ! "$UPDATES_AUR" ] && UPDATES_AUR=0
+
+UPDATES=$(("$UPDATES_PACMAN" + "$UPDATES_AUR"))
+if [ "$UPDATES_PACMAN" -gt "$DISPLAY_THRESHOLD" ]; then
+    echo "$UPDATES"
+else
+    echo ""
+fi
