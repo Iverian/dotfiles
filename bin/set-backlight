@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+MIN_VALUE=20
+CACHE_PATH="$HOME/.cache/backlight-value"
+
+function mincheck {
+    NEW_VAL=$1
+    if [ "$NEW_VAL" -ge "$MIN_VALUE" ]; then
+        xbacklight -set $NEW_VAL
+    else
+        xbacklight -set $MIN_VALUE
+    fi
+}
+
+CMD=$1
+case $CMD in
+    inc)
+        xbacklight -inc $2
+        ;;
+    dec)
+        CUR=$(xbacklight -get)
+        mincheck $(echo "($CUR - $2) / 1" | bc)
+        ;;
+    set)
+        mincheck $2
+        ;;
+    toggle)
+        if [ -f "$CACHE_PATH" ]; then
+            xbacklight -set $(cat "$CACHE_PATH")
+            rm $CACHE_PATH
+        else
+            xbacklight -get >$CACHE_PATH
+            xbacklight -set 0
+        fi
+        ;;
+esac
+

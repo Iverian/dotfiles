@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+TARGET=${1:-clipboard}
+SCREENSHOT_DIR=${2:-"$HOME/Изображения/Screenshots"}
+
+CMD_TARGET=""
+case $TARGET in
+clipboard)
+    CMD_TARGET="| xclip -selection clipboard -t image/png"
+    ;;
+file)
+    if [ ! -d "$SCREENSHOT_DIR" ]; then
+        mkdir -p $SCREENSHOT_DIR
+        echo "Created folder $SCREENSHOT_DIR"
+    fi
+    CMD_TARGET="\"${SCREENSHOT_DIR}/$(date +%s).png\""
+    ;;
+*)
+    echo "Unknown option TARGET=\"$TARGET\""
+    exit 1
+    ;;
+esac
+
+PROMPT="Screenshot to $TARGET"
+ALL="All"
+WINDOW="Active window"
+SELECTION="Selection"
+
+source "$HOME/.config/dmenurc"
+CHOSEN=$(echo -e "$ALL\n$WINDOW\n$SELECTION" | eval "$DMENU -p \"$PROMPT\"")
+
+case $CHOSEN in
+$ALL)
+    eval "maim -o $CMD_TARGET"
+    ;;
+$WINDOW)
+    eval "maim -oi $(xdotool getactivewindow) $CMD_TARGET"
+    ;;
+$SELECTION)
+    eval "maim -osb 4 $CMD_TARGET"
+    ;;
+esac

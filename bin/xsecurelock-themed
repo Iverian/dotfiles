@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+export XSECURELOCK_SAVER=saver_blank
+export XSECURELOCK_AUTH_TIMEOUT=15
+export XSECURELOCK_FONT="Consolas:size=11"
+export XSECURELOCK_AUTH_BACKGROUND_COLOR=$(xgetres xsecurelock.background)
+export XSECURELOCK_AUTH_FOREGROUND_COLOR=$(xgetres xsecurelock.foreground)
+export XSECURELOCK_AUTH_WARNING_COLOR=$(xgetres xsecurelock.color3)
+export XSECURELOCK_SHOW_HOSTNAME=0
+export XSECURELOCK_BLANK_DPMS_STATE=off
+export XSECURELOCK_BLANK_TIMEOUT=10
+
+xsecurelock
+

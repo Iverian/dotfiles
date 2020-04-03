@@ -1,0 +1,20 @@
+#!/usr/bin/env fish
+
+set CHOICES Network Bluetooth Pulseaudio Keyring VPN
+set CHOICES_SEP (string join ';' $CHOICES)
+set RESULT (rofi-dmenu $CHOICES_SEP)
+
+switch "$RESULT"
+case $CHOICES[1]
+    kitty --class="Nmtui" -T="Network Configuration" nmtui & ; disown
+case $CHOICES[2]
+    blueman-manager & ; disown
+case $CHOICES[3]
+    pavucontrol & ; disown
+case $CHOICES[4]
+    seahorse & ; disown
+case $CHOICES[5]
+    pia-manager & ; disown
+case '*'
+    echo ''
+end

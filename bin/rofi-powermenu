@@ -1,0 +1,19 @@
+#!/usr/bin/env fish
+
+set CHOICES "Lock;Sleep;Poweroff;Reboot;Log out"
+set RESULT (rofi-dmenu "$CHOICES")
+
+switch "$RESULT"
+case 'Lock'
+    loginctl lock-session
+case 'Sleep'
+    systemctl hybrid-sleep
+case 'Poweroff'
+    systemctl poweroff
+case 'Reboot'
+    systemctl reboot
+case 'Log out'
+    loginctl terminate-session $XDG_SESSION_ID
+case '*'
+    echo ''
+end

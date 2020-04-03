@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+PROMPT="Powermenu"
+LOCK="Lock"
+SUSPEND="Suspend"
+HIBERNATE="Hibernate"
+POWEROFF="Poweroff"
+REBOOT="Reboot"
+LOGOUT="Log out"
+
+source "$HOME/.config/dmenurc"
+CHOSEN=$(echo -e "$LOCK\n$SUSPEND\n$HIBERNATE\n$POWEROFF\n$REBOOT\n$LOGOUT" | eval "$DMENU -p \"$PROMPT\"")
+
+case $CHOSEN in
+$LOCK)
+    light-locker-command -l
+    # loginctl lock-session
+    ;;
+$SUSPEND)
+    systemctl hybrid-sleep
+    ;;
+$HIBERNATE)
+    systemctl hibernate
+    ;;
+$POWEROFF)
+    systemctl poweroff
+    ;;
+$REBOOT)
+    systemctl reboot
+    ;;
+$LOGOUT)
+    loginctl terminate-session $XDG_SESSION_ID
+    ;;
+esac
