@@ -6,5 +6,4 @@ Type=oneshot
 
 ExecStart=/usr/bin/wal --theme sexy-x-dotshare
 ExecStart=/usr/bin/feh --no-fehbg --bg-fill %h/.config/wall.png
-ExecStart=/usr/bin/xrdb -merge %h/.config/i3/Xresources
 ExecStart=/usr/bin/xrdb -merge %h/.cache/wal/colors.Xresources

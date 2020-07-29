@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-source "$HOME/.config/dmenurc"
-
-j4-dmenu-desktop --term="${TERMINAL:=kitty}" --dmenu="$DMENU" &
-

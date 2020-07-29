@@ -1,0 +1,13 @@
+[module/volume]
+type = internal/pulseaudio
+format-volume-prefix = "墳 "
+format-volume-prefix-foreground = ${colors.secondary}
+format-volume = <label-volume>
+label-volume = "%percentage%"
+label-muted = "MUT"
+format-muted = <label-muted>
+format-muted-prefix = "ﱝ "
+format-muted-prefix-foreground = ${colors.primary}
+click-right = pavucontrol &
+
+; vim:ft=cfg

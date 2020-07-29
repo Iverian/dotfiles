@@ -1,0 +1,5 @@
+[module/window]
+type = internal/xwindow
+label = %title:0:50:...%
+
+; vim:ft=cfg

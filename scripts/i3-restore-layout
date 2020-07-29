@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+CONFIG_DIR="$HOME/.config/i3"
+WORKSPACE="$CONFIG_DIR/workspace"
+APPLICATIONS="/usr/share/applications"
+FLATPACKS="/var/lib/flatpak/exports/share/applications"
+
+restore_layout() {
+    i3-msg "workspace $1; append_layout $WORKSPACE/$1.json"
+}
+application() {
+    DIR="$APPLICATIONS"
+    [ -n "$2" ] && DIR="$FLATPACKS"
+    dex "$DIR/$1.desktop" &
+}
+restore_layout 6
+restore_layout 7
+
+application org.telegram.desktop -
+application org.gnome.Evolution
+application com.spotify.Client -

@@ -1,0 +1,7 @@
+[module/openvpn]
+type = custom/script
+exec = scripts/openvpn-running
+interval = 1.0
+label-foreground = ${colors.primary}
+
+# vim:ft=cfg

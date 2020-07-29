@@ -1,0 +1,10 @@
+[module/wlan]
+type = internal/network
+interface = ${env:WLAN_INTERFACE:wlan0}
+interval = 1.0
+format-connected-prefix = "直 "
+format-connected-prefix-foreground = ${colors.secondary}
+label-connected = "%essid:0:15%"
+format-disconnected =
+
+; vim:ft=cfg

@@ -1,0 +1,10 @@
+[colors]
+bg = ${xrdb:background:#dfdfdf}
+fg = ${xrdb:foreground:#dfdfdf}
+bg-alt = ${xrdb:foreground:#dfdfdf}
+fg-alt = ${xrdb:background:#dfdfdf}
+primary = ${xrdb:color3:#dfdfdf}
+secondary = ${xrdb:color2:#dfdfdf}
+alert = ${xrdb:color1:#dfdfdf}
+
+; vim:ft=cfg

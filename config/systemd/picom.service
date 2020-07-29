@@ -1,8 +1,0 @@
-[Unit]
-Description=X11 compositor
-
-[Service]
-Type=simple
-
-ExecStart=/usr/bin/picom --config %h/.config/picom/picom.conf
-

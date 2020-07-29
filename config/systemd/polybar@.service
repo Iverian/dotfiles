@@ -1,0 +1,9 @@
+[Unit]
+Description=Polybar %i
+After=i3-wallpaper.service
+
+[Service]
+Type=simple
+
+WorkingDirectory=%h/.config/polybar
+ExecStart=/usr/bin/polybar -c config %i

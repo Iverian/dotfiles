@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+## Author : Aditya Shakya (adi1090x)
+## Mail : adi1090x@gmail.com
+## Github : @adi1090x
+## Reddit : @adi1090x
+
+TARGET=${1:-clipboard}
+SCREENSHOT_DIR=$(xdg-user-dir PICTURES)
+
+case $TARGET in
+clipboard)
+    CMD_TARGET="| xclip -selection clipboard -t image/png"
+    ;;
+file)
+    if [ ! -d "$SCREENSHOT_DIR" ]; then
+        mkdir -p $SCREENSHOT_DIR
+        echo "Created folder $SCREENSHOT_DIR"
+    fi
+    CMD_TARGET="\"${SCREENSHOT_DIR}/$(date +%s).png\""
+    ;;
+*)
+    echo "Unknown option TARGET=\"$TARGET\""
+    exit 1
+    ;;
+esac
+
+rofi_command="rofi -theme themes/screenshot.rasi"
+
+# Options
+screen=""
+area=""
+window=""
+
+# Variable passed to rofi
+options="$screen\n$area\n$window"
+
+chosen="$(echo -e "$options" | $rofi_command -p '' -dmenu -selected-row 1)"
+case $chosen in
+    $screen)
+        eval "maim -u $CMD_TARGET"
+        ;;
+    $area)
+        eval "maim -usb 3 $CMD_TARGET"
+        ;;
+    $window)
+        eval "sleep 0.5; maim -ui $(xdotool getactivewindow) $CMD_TARGET"
+        ;;
+esac
+

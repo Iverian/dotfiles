@@ -1,0 +1,13 @@
+[module/keyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+format = <label-layout><label-indicator>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+label-layout = %icon%
+layout-icon-0 = us;EN
+layout-icon-1 = ru;RU
+label-indicator-on-capslock = " CAPS"
+label-indicator-on-capslock-foreground = ${colors.primary}
+
+; vim:ft=cfg

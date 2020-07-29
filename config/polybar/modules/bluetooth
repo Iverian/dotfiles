@@ -1,0 +1,9 @@
+[module/bluetooth]
+type = custom/script
+exec = scripts/bluetooth-status
+interval = 1.0
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+click-left = bluetoothctl disconnect
+
+; vim:ft=cfg

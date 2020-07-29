@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export MONITOR=$(xrandr | grep ' connected' | cut -f1 -d' ')
+export WLAN_INTERFACE=$(nmcli d | tail +2 | grep ' wifi ' | cut -f1 -d' ')
+

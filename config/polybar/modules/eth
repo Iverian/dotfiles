@@ -1,0 +1,11 @@
+[module/eth]
+type = internal/network
+interface = enp0s20f0u2
+interval = 1.0
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.secondary}
+format-connected-prefix-padding = 1
+label-connected = "%local_ip% / %linkspeed%"
+format-disconnected =
+
+; vim:ft=cfg

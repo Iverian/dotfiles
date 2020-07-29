@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+/usr/bin/light-locker          \
+    --display=$DISPLAY         \
+    --no-lock-on-lid           \
+    --no-lock-on-suspend       \
+    --late-locking             \
+

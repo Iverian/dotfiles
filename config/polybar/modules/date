@@ -1,0 +1,12 @@
+[module/date]
+type = internal/date
+interval = 1
+time = "%H:%M "
+time-alt = "%H:%M "
+date =
+date-alt = "%a, %d.%m.%y "
+label = %date%%time%
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+; vim:ft=cfg

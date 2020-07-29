@@ -1,22 +1,17 @@
 scriptencoding utf-8
 " Set POSIX compatible shell instead of fish
-" {{{
 if &shell =~# 'fish$'
     set shell=zsh
 endif
-" }}}
 
 " Load vim-plug
-" {{{
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimPlug VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" }}}
 
 " Plugins
-" {{{
 call plug#begin('~/.local/share/nvim/plugged')
 "" Appearance
 Plug 'itchyny/lightline.vim'
@@ -62,10 +57,8 @@ Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/local_vimrc'
 call plug#end()
-" }}}
 
 " Basic configuration
-" {{{
 syntax on
 filetype plugin indent on
 set relativenumber
@@ -127,6 +120,7 @@ highlight Folded ctermfg=0 ctermbg=6
 highlight Visual ctermbg=8
 highlight DiffAdd ctermbg=4 ctermfg=0
 highlight Pmenu ctermbg=8 ctermfg=7
+highlight SignColumn ctermbg=NONE
 "" Views
 set viewoptions=cursor,folds,slash,unix
 let nosaveview=['help', 'netrw', 'vim-plug', 'gitcommit', '']
@@ -139,11 +133,8 @@ augroup AutoSaveView
 augroup end
 "" Python
 let g:python3_host_prog = '~/.config/nvim/py3nvim/bin/python3'
-let g:python_host_prog = '~/.config/nvim/py2nvim/bin/python2'
-" }}}
 
 " Plugin configuration
-" {{{
 "" Lightline
 let g:lightline = {}
 let g:lightline.colorscheme = 'wombat'
@@ -201,7 +192,7 @@ let g:ale_fixers = {
 \   'cmake': ['cmakeformat'],
 \   'json': ['prettier'],
 \   'sh': ['shfmt'],
-\   'python': ['black', 'isort'],
+\   'python': ['yapf', 'isort'],
 \   'yaml': ['prettier'],
 \}
 let g:ale_sign_error = 'E>'
@@ -260,15 +251,6 @@ augroup VimLsp
         \       ]
         \   },
         \   'whitelist': ['python'],
-        \   'workspace_config': {
-        \       'pyls': {
-        \           'plugins': {
-        \               'pydocstyle': {
-        \                   'enabled': v:true,
-        \               },
-        \           },
-        \       },
-        \   },
         \})
     endif
     if executable('bash-language-server')
@@ -354,10 +336,8 @@ augroup END
 let g:local_vimrc = ['.vimconfig', '_vimrc_local.vim']
 "" Suda
 let g:suda_smart_edit = 1
-" }}}
 
 " Filetype specific settings
-" {{{
 augroup FileSyntax
     autocmd FileType fish
     \   compiler fish
@@ -377,17 +357,6 @@ augroup END
 let g:python_highlight_all = 1
 "" Markdown
 let g:instant_markdown_browser = '/usr/bin/firefox --new-tab'
-"let g:instant_markdown_slow = 1
-"let g:instant_markdown_autostart = 0
-"let g:instant_markdown_open_to_the_world = 1
-"let g:instant_markdown_allow_unsafe_content = 1
-"let g:instant_markdown_allow_external_content = 0
-"let g:instant_markdown_mathjax = 1
-"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-"let g:instant_markdown_autoscroll = 0
-"let g:instant_markdown_port = 8888
-"let g:instant_markdown_python = 1
-" }}}
 
 " Keybindings
 " {{{
@@ -411,6 +380,3 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 """ Backslash is the real leader but space is mapped to it
-" }}}
-
-" vim:foldmethod=marker:foldlevel=0:foldenable

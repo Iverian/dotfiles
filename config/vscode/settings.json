@@ -1,0 +1,139 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "workbench.iconTheme": "simple-icons",
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.highlights.enabled": true,
+    "editor.fontFamily": "'Fira Code', monospace",
+    "editor.fontSize": 11,
+    "editor.wordWrap": "bounded",
+    "editor.fontLigatures": true,
+    "editor.tabCompletion": "on",
+    "editor.formatOnSave": true,
+    "editor.wordWrapColumn": 99,
+    "editor.matchBrackets": "near",
+    "editor.minimap.enabled": true,
+    "editor.suggestSelection": "first",
+    "editor.renderWhitespace": "boundary",
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "window.zoomLevel": 0,
+    "explorer.sortOrder": "type",
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.fontSize": 11,
+    "terminal.integrated.fontFamily": "'Fira Code', monospace",
+    "debug.console.fontFamily": "'Fira Code', monospace",
+    "debug.console.fontSize": 11,
+    "bracket-pair-colorizer-2.colors": [
+        "#EF721F",
+        "#8570FF",
+        "#FFBF00",
+        "#8FC93A",
+        "#C4BEBC"
+    ],
+    // LaTeX Workshop
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-f",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "-xelatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk",
+                "latexmk"
+            ]
+        },
+        {
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.outDir": "build",
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "zathura",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "--synctex-editor-command",
+        "code --reuse-window -g \"%{input}:%{line}\"",
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "zathura",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "--synctex-forward=%LINE%:0:%TEX%",
+        "%PDF%"
+    ],
+    // Python
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.jediEnabled": false,
+    "python.formatting.provider": "black",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    // Git
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    // С++
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.clang_format_sortIncludes": true,
+    "C_Cpp.default.intelliSenseMode": "msvc-x64",
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.clang_format_fallbackStyle": "WebKit",
+    "cmake.configureOnOpen": true,
+    "latex-workshop.message.update.show": false,
+    "git.enableSmartCommit": true,
+    "explorer.confirmDelete": false,
+    "cmake.buildDirectory": "${workspaceFolder}/.vscode/build",
+    "testMate.cpp.log.userId": "98a2e3452e1417072c8bce9048855f776725fb6b",
+    "testMate.cpp.log.logSentry": "disable_3",
+    "testMate.cpp.test.executables": ".vscode/{build,Build,BUILD,out,Out,OUT}/**/*{test,Test,TEST}*",
+    "python.dataScience.askForKernelRestart": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.hovers.enabled": false,
+    "gitlens.views.repositories.location": "scm",
+    "gitlens.views.fileHistory.location": "scm",
+    "gitlens.views.lineHistory.location": "scm",
+    "gitlens.views.compare.location": "scm",
+    "gitlens.views.search.location": "scm",
+    "ltex.dictionary": {
+        "ru-RU": [
+            "конкрентных"
+        ]
+    }
+}

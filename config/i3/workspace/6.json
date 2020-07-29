@@ -1,0 +1,41 @@
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "tabbed",
+    "percent": null,
+    "type": "con",
+    "nodes": [
+        {
+            "floating": "auto_off",
+            "geometry": {
+                "height": 1729,
+                "width": 1582,
+                "x": 12,
+                "y": 59
+            },
+            "percent": 0.5,
+            "swallows": [
+                {
+                    "class": "^TelegramDesktop$"
+                }
+            ],
+            "type": "con"
+        },
+        {
+            "floating": "auto_off",
+            "geometry": {
+                "height": 1730,
+                "width": 3176,
+                "x": 0,
+                "y": 0
+            },
+            "percent": 0.5,
+            "swallows": [
+                {
+                    "class": "^Evolution$"
+                }
+            ],
+            "type": "con"
+        }
+    ]
+}

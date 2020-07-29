@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/iverian/.config/wal/colorschemes/dark'
+let g:netrw_dirhist_2='/home/iverian/.config/wal/colorschemes'
+let g:netrw_dirhist_1='/home/iverian/.config/wal'

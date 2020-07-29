@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## Author : Aditya Shakya (adi1090x)
+## Mail : adi1090x@gmail.com
+## Github : @adi1090x
+## Reddit : @adi1090x
+
+style="style_normal_grid"
+
+rofi -no-lazy-grab -combi-modi window,drun -show combi -modi combi -theme launchers/"$style".rasi

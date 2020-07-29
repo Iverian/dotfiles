@@ -1,0 +1,8 @@
+* {{
+  accent:           {color2};
+  background:       {background};
+  background-light: #202020;
+  foreground:       {foreground};
+  on:               {color1};
+  off:              {color6};
+}}

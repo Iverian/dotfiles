@@ -1,0 +1,8 @@
+[module/updates]
+type = custom/script
+exec = ${env:CONFIG_DIR}/scripts/pacman-updates
+interval = 1200
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+; vim:ft=cfg
