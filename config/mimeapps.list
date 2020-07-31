@@ -1,0 +1,24 @@
+[Default Applications]
+application/pdf=org.gnome.Evince.desktop
+image/png=org.gnome.eog.desktop
+x-scheme-handler/mailto=org.gnome.Evolution.desktop
+image/jpeg=org.gnome.eog.desktop
+x-scheme-handler/discord-471872241299226636=discord-471872241299226636.desktop
+
+[Added Associations]
+application/pdf=org.inkscape.Inkscape.desktop;org.pwmt.zathura-pdf-mupdf.desktop;org.gnome.Evince.desktop;inkscape.desktop;
+application/json=vscodium-bin.desktop;nvim.desktop;
+text/markdown=vscodium-bin.desktop;nvim.desktop;
+application/x-executable=vscodium-bin.desktop;nvim.desktop;
+application/x-yaml=vscodium-bin.desktop;nvim.desktop;
+image/png=com.github.maoschanz.drawing.desktop;org.inkscape.Inkscape.desktop;org.gnome.eog.desktop;
+text/x-tex=vscodium-bin.desktop;
+x-scheme-handler/mailto=userapp-Evolution-CFHVK0.desktop;org.gnome.Evolution.desktop;
+image/jpeg=com.github.maoschanz.drawing.desktop;org.gnome.eog.desktop;
+application/x-ms-dos-executable=wine.desktop;
+text/plain=vscodium-bin.desktop;
+image/svg+xml=org.inkscape.Inkscape.desktop;org.gnome.eog.desktop;
+application/x-bittorrent=transmission-gtk.desktop;
+application/epub+zip=org.pwmt.zathura-pdf-mupdf.desktop;org.gnome.Evince.desktop;
+application/xml=libreoffice-writer.desktop;
+application/x-ica=vscodium-bin.desktop;
